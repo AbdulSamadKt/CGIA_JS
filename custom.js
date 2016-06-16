@@ -132,17 +132,21 @@ $("a.menu__link h3").css('margin-top' , '-38px');
 $("#sub-menu").css({"position":"fixed","bottom":"initial","top":"67px","border-top":"3px solid #82000a","opacity":"1"});  
 return;
 }  var cn=1;
-    // Code to add new field in Schedule a tour
+// Code to add new field in Schedule a tour
  $(".plus").click(function(){ 
-    var text=$('<div class="extra"><div class="st-child-name">Child\'s Name<br><span class="wpcf7-form-control-wrap child-name"><input type="text" name="child-name-'+cn+'" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></span></div><div class="st-child-age">Child\'s Age<br><span class="wpcf7-form-control-wrap child-age"><input type="number" name="child-age-'+cn+'"" value="" class="wpcf7-form-control wpcf7-number wpcf7-validates-as-required wpcf7-validates-as-number" min="1" max="15" aria-required="true" aria-invalid="false"></span></div><input type="text" name="cn" value="'+cn+'" size="40" class="wpcf7-form-control wpcf7-text hide" aria-required="true" aria-invalid="false"></div>');
+   if(cn<5){
+    var text=$('<div class="extra"><div class="st-child-name">Child\'s Name<br><span class="wpcf7-form-control-wrap child-name"><input type="text" name="child-name-'+cn+'" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></span></div><div class="st-child-age">Child\'s Age<br><span class="wpcf7-form-control-wrap child-age"><input type="number" name="child-age-'+cn+'"" value="" class="wpcf7-form-control wpcf7-number wpcf7-validates-as-required wpcf7-validates-as-number" min="1" max="15" aria-required="true" aria-invalid="false"></span></div><input type="text" name="cn" value="'+cn+'" size="40" class="wpcf7-form-control wpcf7-text hide count" aria-required="true" aria-invalid="false"></div>');
 $(".plus").parent().before(text);
-   cn=cn+1;
   $(".minus").show();
+   cn=cn+1;
+   }
+   else alert("Sorry! Can't add more child");
 });
- 
+
  $(".minus").on('click',function(){
 cn=cn-1;
 if(cn==1) $(".minus").hide();
  $(".more-child").prev(".extra").remove();
+  $('.count').attr('value')=cn;
  });
 });
